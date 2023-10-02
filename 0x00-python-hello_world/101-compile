@@ -1,2 +1,3 @@
 #!/bin/bash
+PYFILEc="${PYFILE}c"
 echo -e "import py_compile\npy_compile.compile('$PYFILE', cfile='$PYFILEc')" | python3
