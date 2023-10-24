@@ -11,7 +11,7 @@ class Square:
     Methods:
         __init__(self, size)
     """
-    def __init__(self, size=0):
+    def __init__(self, size=0) -> None:
         """Initializes an instance of the Square class.
 
         Args:
@@ -25,6 +25,7 @@ class Square:
             TypeError: If size is less than 0.
             ValueError: If size is not an integer.
         """
+        self.__size = size
         if not isinstance(size, int):
             raise TypeError("Size must be an integer.")
         elif size < 0:
