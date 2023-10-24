@@ -11,7 +11,7 @@ class Square:
     Methods:
         __init__(self, size)
     """
-    def __init__(self, size=0) -> None:
+    def __init__(self, size=0):
         """Initializes an instance of the Square class.
 
         Args:
