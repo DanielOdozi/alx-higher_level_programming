@@ -26,7 +26,7 @@ class Square:
         Returns: the current square area.
         """
         return self.__size ** 2
-    
+
     def my_print(self):
         """prints in stdout the square with the character #
         """
