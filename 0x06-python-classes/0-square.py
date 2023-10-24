@@ -1,11 +1,23 @@
-#!/usr/bin/pytthon3
-"""Defines a class Square"""
+#!/usr/bin/python3
+"""Defines a class Square."""
 
 
 class Square:
-    """Class that defines properties of square.
+    """Class that defines properties of a square.
+
+    Attributes:
+        None
+
+    Methods:
+        __init__(self)
     """
-    def ___init__(self) -> None:
-        """To defne the function square that does nothing.
+    def __init__(self) -> None:
+        """Initializes an instance of the Square class.
+
+        Args:
+            self: The current instance of the Square class.
+
+        Returns:
+            None
         """
         pass
