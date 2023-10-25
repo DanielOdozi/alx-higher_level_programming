@@ -27,7 +27,7 @@ class Square:
         Returns: the size field of a square.
         """
         return self.__size
-    
+
     @size.setter
     def size(self, value):
         """Propery setter for size.
@@ -44,7 +44,7 @@ class Square:
         elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
-    
+
     @property
     def position(self):
         """Retrieves the position field instance.
@@ -52,7 +52,7 @@ class Square:
         Returns: the position field of a square.
         """
         return self.__position
-    
+
     @position.setter
     def position(self, value):
         """Propery setter for size.
@@ -68,7 +68,7 @@ class Square:
             if i < 0:
                 raise TypeError("position must be a tuple of 2 positive integer")
         self.__position = value
-    
+
     def my_print(self):
         """prints in stdout the square with the character #
         """
