@@ -1,72 +1,78 @@
-#!?usr/bin/python3
+#!/usr/bin/python3
 """Defines a class Square"""
 
 
 class Square:
     """
-    Class that defines a square.
+    Class that defines properties of square by: (based on 5-square.py).
 
     Attributes:
-        size: The size of the square.
-        position: The position of the square.
+        size: size of a square (1 side).
     """
     def __init__(self, size=0, position=(0, 0)):
-        """Creates new instances of node.
+        """Creates new instances of square.
 
         Args:
-            __size : size field of square.
-            __postion: position field of square.
+            __size (int): size of the square (1 side).
+            __position (tuple): position of the square.
         """
         self.size = size
         self.position = position
 
+    def area(self):
+        """Calculates the area of square.
+
+        Returns: the current square area.
+        """
+        return self.__size ** 2
+
     @property
     def size(self):
-        """Retrieves the size field instance.
-
-        Returns: the size field of a square.
+        """Returns the size of a square
         """
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Propery setter for size.
+        """Property setter for size.
 
         Args:
-            value (int): size field of a square.
+            value (int): size of a square (1 side).
 
         Raises:
-            TypeError: size must be an integer
-            ValueError: size must be >= 0
+            TypeError: size must be an integer.
+            ValueError: size must be >= 0.
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
 
     @property
     def position(self):
-        """Retrieves the position field instance.
-
-        Returns: the position field of a square.
+        """Returns the position of the square
         """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """Propery setter for size.
+        """Property setter for position.
 
         Args:
-            value (int): size field of a square.
+            value (tuple): position of the square.
 
         Raises:
-            TypeError: size must be an integer
-            ValueError: size must be >= 0
+            TypeError: position must be a tuple of 2 positive integers
         """
-        for i in value:
-            if i < 0:
-                raise TypeError("position must be a tuple of 2 positive integer")
+        if not isinstance(value, tuple):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not isinstance(value[0], int) or not isinstance(value[1], int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if value[0] < 0 or value[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
     def my_print(self):
