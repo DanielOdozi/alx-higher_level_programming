@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """Class that defines properties of a square.
+    """Class that defines properties of a Rectangle.
 
     Attributes:
         None
