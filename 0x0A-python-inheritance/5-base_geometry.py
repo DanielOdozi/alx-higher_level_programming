@@ -11,5 +11,4 @@ class BaseGeometry:
     Returns:
         None
     """
-    def ____init__(self) -> None:
-        pass
+    pass
