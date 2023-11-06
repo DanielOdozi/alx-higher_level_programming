@@ -1,32 +1,16 @@
-#!/usr/nbin/python3
-'''A class that inherits from list'''
+#!/usr/bin/python3
+"""Defines a class MyList that inherits from list"""
 
 
 class MyList(list):
-    """
-    Function that returns the list of available attributes and methods,
-    of an object
+    """Class that inherits from list.
 
     Args:
-        list (class): list
+        list (list): list to sort in ascending order.
     """
-    def __init__(self) -> None:
-        """
-        Call the main class into the sub-class
-
-        Args:
-            self (class): self
-        """
-        super().__init__()
-
     def print_sorted(self):
+        """Prints a list in ascending order.
         """
-        Print the list out but sorted
-
-        Args:
-            self (class): self
-
-        Print:
-            list: The list sorted
-        """
-        print(sorted(self))
+        list_ = self[:]
+        list_.sort()
+        print(list_)
