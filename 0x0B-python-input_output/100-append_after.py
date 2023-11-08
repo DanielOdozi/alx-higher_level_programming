@@ -16,15 +16,11 @@ def append_after(filename="", search_string="", new_string=""):
     Prints:
         Updated file content.
     """
-    try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+    with open(filename, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
 
-        with open(filename, 'w', encoding='utf-8') as g:
-            for line in lines:
-                g.write(line)
-                if search_string in line:
-                    g.write(new_string)
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    with open(filename, 'w', encoding='utf-8') as g:
+        for line in lines:
+            g.write(line)
+            if search_string in line:
+                g.write(new_string)
