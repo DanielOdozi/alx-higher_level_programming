@@ -4,49 +4,131 @@ from models.base import Base
 
 
 class Rectangle(Base):
+    """Class that defines properties of Rectangle.
+
+     Attributes:
+        width (int): Width of the Rectangle.
+        height (int): Height of the Rectangle.
+        x (int): value.
+        y (int): value.
+        id (int): Identity of each instance.
+    """
     def __init__(self, width, height, x=0, y=0, id=None):
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        """Creates new instances of Rectangle.
+
+        Args:
+            width (int): Width of the Rectangle.
+            height (int): Height of the Rectangle.
+            x (int): value.
+            y (int): value.
+            id (int, optional): Identity of each instance. Defaults to None.
+        """
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
 
     @property
     def width(self):
-        return self.width
+        """Width retriever.
+
+        Returns:
+            int: width of rectangle.
+        """
+        return self.__width
 
     @property
     def height(self):
-        return self.height
+        """Height retriever.
+
+        Returns:
+            int: height of rectangle.
+        """
+        return self.__height
 
     @property
     def x(self):
-        return self.x
+        """x retriever.
+
+        Returns:
+            int: x of rectangle.
+        """
+        return self.__x
 
     @property
     def y(self):
-        return self.y
+        """y retriever.
+
+        Returns:
+            int: y of rectangle.
+        """
+        return self.__y
 
     @width.setter
     def width(self, value):
+        """Property setter for width of rectangle.
+
+        Args:
+            value (int): width of rectangle.
+
+        Raises:
+            TypeError: if width is not an integer.
+            ValueError: if width is less than or equal to zero.
+        """
         if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(value))
-        self.width = value
+            raise TypeError("width must be an integer")
+        elif value <= 0:
+            raise ValueError("width must be > 0.")
+        self.__width = value
 
     @height.setter
     def height(self, value):
+        """Property setter for height of rectangle.
+
+        Args:
+            value (int): height of rectangle.
+
+        Raises:
+            TypeError: if height is not an integer.
+            ValueError: if height is less than or equal to zero.
+        """
         if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(value))
-        self.height = value
+            raise TypeError("height must be an integer")
+        elif value <= 0:
+            raise ValueError("height must be > 0.")
+        self.__height = value
 
     @x.setter
     def x(self, value):
+        """Property setter for x of rectangle.
+
+        Args:
+            value (int): x of rectangle.
+
+        Raises:
+            TypeError: if x is not an integer.
+            ValueError: if x is less than zero.
+        """
         if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(value))
-        self.x = value
+            raise TypeError("x must be an integer")
+        elif value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
 
     @y.setter
-    def width(self, value):
+    def y(self, value):
+        """Property setter for y of rectangle.
+
+        Args:
+            value (int): y of rectangle.
+
+        Raises:
+            TypeError: if y is not an integer.
+            ValueError: if y is less than zero.
+        """
         if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(value))
-        self.y = value
+            raise TypeError("y must be an integer")
+        elif value < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value
