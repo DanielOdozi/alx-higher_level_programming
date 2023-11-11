@@ -157,3 +157,10 @@ class Rectangle(Base):
         return ("[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}".
                 format(self.id, self.__x, self.__y, self.__width,
                        self.__height))
+
+    def update(self, *args):
+        '''updates the args'''
+        self.width = args[0]
+        self.height = args[1]
+        self.x = args[2]
+        self.y = args[3]
