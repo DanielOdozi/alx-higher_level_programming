@@ -77,7 +77,26 @@ class Base:
             return []
 
         objects_data = cls.from_json_string(json_string)
-        return [cls.create(**data) for data in objects_data]
+        instances = []
+        for data in objects_data:
+            instance = None
+            if cls.__name__ == "Rectangle":
+                instance = cls(1, 1)
+                instance.update(
+                    id=data.get('id', 0),
+                    width=data.get('width', 0),
+                    height=data.get('height', 0),
+                    x=data.get('x', 0),
+                    y=data.get('y', 0)
+                )
+            elif cls.__name__ == "Square":
+                instance = cls(1)
+                instance.update(id=data.get('id', 0), size=data.get('size', 0), x=data.get('x', 0), y=data.get('y', 0))
+
+            if instance is not None:
+                instances.append(instance)
+
+        return instances
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -116,15 +135,15 @@ class Base:
             if cls.__name__ == "Rectangle":
                 instance = cls(1, 1)
                 instance.update(
+                    id=data[0],
                     width=data[1],
                     height=data[2],
                     x=data[3],
                     y=data[4]
                 )
-
             elif cls.__name__ == "Square":
                 instance = cls(1)
-                instance.update(size=data[1], x=data[2], y=data[3])
+                instance.update(id=data[0], size=data[1], x=data[2], y=data[3])
             else:
                 raise ValueError(f"Unsupported class: {cls.__name__}")
 
