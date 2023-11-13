@@ -91,7 +91,12 @@ class Base:
                 )
             elif cls.__name__ == "Square":
                 instance = cls(1)
-                instance.update(id=data.get('id', 0), size=data.get('size', 0), x=data.get('x', 0), y=data.get('y', 0))
+                instance.update(
+                    id=data.get('id', 0),
+                    size=data.get('size', 0),
+                    x=data.get('x', 0),
+                    y=data.get('y', 0)
+                )
 
             if instance is not None:
                 instances.append(instance)
