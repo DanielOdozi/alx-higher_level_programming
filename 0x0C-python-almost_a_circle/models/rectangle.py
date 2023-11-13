@@ -38,33 +38,6 @@ class Rectangle(Base):
         """
         return self.__width
 
-    @property
-    def height(self):
-        """Height retriever.
-
-        Returns:
-            int: height of rectangle.
-        """
-        return self.__height
-
-    @property
-    def x(self):
-        """x retriever.
-
-        Returns:
-            int: x of rectangle.
-        """
-        return self.__x
-
-    @property
-    def y(self):
-        """y retriever.
-
-        Returns:
-            int: y of rectangle.
-        """
-        return self.__y
-
     @width.setter
     def width(self, value):
         """Property setter for width of rectangle.
@@ -81,6 +54,15 @@ class Rectangle(Base):
         elif value <= 0:
             raise ValueError("width must be > 0.")
         self.__width = value
+
+    @property
+    def height(self):
+        """Height retriever.
+
+        Returns:
+            int: height of rectangle.
+        """
+        return self.__height
 
     @height.setter
     def height(self, value):
@@ -99,6 +81,15 @@ class Rectangle(Base):
             raise ValueError("height must be > 0.")
         self.__height = value
 
+    @property
+    def x(self):
+        """x retriever.
+
+        Returns:
+            int: x of rectangle.
+        """
+        return self.__x
+
     @x.setter
     def x(self, value):
         """Property setter for x of rectangle.
@@ -115,6 +106,15 @@ class Rectangle(Base):
         elif value < 0:
             raise ValueError("x must be >= 0")
         self.__x = value
+
+    @property
+    def y(self):
+        """y retriever.
+
+        Returns:
+            int: y of rectangle.
+        """
+        return self.__y
 
     @y.setter
     def y(self, value):
