@@ -2,6 +2,7 @@
 '''Class Base'''
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -62,7 +63,7 @@ class Base:
             dummy = cls(1)
         dummy.update(**dictionary)
 
-        return(dummy)
+        return (dummy)
 
     @classmethod
     def load_from_file(cls):
@@ -87,7 +88,14 @@ class Base:
             csv_writer = csv.writer(csvfile)
             for obj in list_objs:
                 if cls.__name__ == "Rectangle":
-                    csv_writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                    csv_writer.writerow([
+                        obj.id,
+                        obj.width,
+                        obj.height,
+                        obj.x,
+                        obj.y
+                    ])
+
                 elif cls.__name__ == "Square":
                     csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
 
@@ -107,7 +115,13 @@ class Base:
         for data in objects_data:
             if cls.__name__ == "Rectangle":
                 instance = cls(1, 1)
-                instance.update(width=data[1], height=data[2], x=data[3], y=data[4])
+                instance.update(
+                    width=data[1],
+                    height=data[2],
+                    x=data[3],
+                    y=data[4]
+                )
+
             elif cls.__name__ == "Square":
                 instance = cls(1)
                 instance.update(size=data[1], x=data[2], y=data[3])
@@ -117,3 +131,31 @@ class Base:
             instances.append(instance)
 
         return instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        '''opens a window and draws all the Rectangles and Squares'''
+        turtle.speed(2)
+
+        for rect in list_rectangles:
+            turtle.penup()
+            turtle.goto(rect.x, rect.y)
+            turtle.pendown()
+            turtle.forward(rect.width)
+            turtle.right(90)
+            turtle.forward(rect.height)
+            turtle.right(90)
+            turtle.forward(rect.width)
+            turtle.right(90)
+            turtle.forward(rect.height)
+            turtle.right(90)
+
+        for square in list_squares:
+            turtle.penup()
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
+            for _ in range(4):
+                turtle.forward(square.size)
+                turtle.right(90)
+
+        turtle.exitonclick()
