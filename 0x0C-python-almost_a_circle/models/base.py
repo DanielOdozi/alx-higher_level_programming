@@ -3,6 +3,7 @@
 import json
 import csv
 import turtle
+import os
 
 
 class Base:
@@ -70,38 +71,19 @@ class Base:
         '''returns a list of instances'''
         filename = "{}.json".format(cls.__name__)
 
-        try:
-            with open(filename, 'r') as file:
-                json_string = file.read()
-        except FileNotFoundError:
+        if os.path.exists(filename) is False:
             return []
 
-        objects_data = cls.from_json_string(json_string)
-        instances = []
-        for data in objects_data:
-            instance = None
-            if cls.__name__ == "Rectangle":
-                instance = cls(1, 1)
-                instance.update(
-                    id=data.get('id', 0),
-                    width=data.get('width', 0),
-                    height=data.get('height', 0),
-                    x=data.get('x', 0),
-                    y=data.get('y', 0)
-                )
-            elif cls.__name__ == "Square":
-                instance = cls(1)
-                instance.update(
-                    id=data.get('id', 0),
-                    size=data.get('size', 0),
-                    x=data.get('x', 0),
-                    y=data.get('y', 0)
-                )
+        with open(filename, 'r') as f:
+            list_str = f.read()
 
-            if instance is not None:
-                instances.append(instance)
+        list_cls = cls.from_json_string(list_str)
+        list_ins = []
 
-        return instances
+        for index in range(len(list_cls)):
+            list_ins.append(cls.create(**list_cls[index]))
+
+        return list_ins
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
